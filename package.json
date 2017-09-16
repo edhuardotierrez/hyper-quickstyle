@@ -1,0 +1,21 @@
+{
+  "name": "hyper-quickstyle",
+  "version": "0.1.1",
+  "description": "Theme for Hyper",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "edhuardotierrez/hyper-quickstyle",
+  "author": {
+    "name": "Edhuardo Tierrez",
+    "email": "edhuardo.tierrez@gmail.com"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "hyper",
+    "hyperterm",
+    "hyper-quickstyle",
+    "quickstyle"
+  ]
+}
