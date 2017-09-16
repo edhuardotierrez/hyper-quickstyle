@@ -25,9 +25,20 @@ const colors            = {
     lightCyan:          '#9EE9F7',
     lightWhite:         foregroundColor,
 };
-
+const scrollbars        = {
+    light: '#455A6D',
+    dark: '#273848'
+}
 
 exports.decorateConfig = config => {
+
+    const hyperQuickStyle = Object.assign({
+        scrollbars: {
+            light: scrollbars.light || 'transparent',
+            dark: scrollbars.dark || 'transparent'
+        }
+    }, config.hyperQuickStyle);
+
     return Object.assign({}, config, {
         foregroundColor,
         backgroundColor,
@@ -48,11 +59,55 @@ exports.decorateConfig = config => {
             span {
                 font-weight: normal !important;
             }
+            ::-webkit-scrollbar-button {
+                width: 0;
+                height: 0;
+                display: none;
+            }
+            ::-webkit-scrollbar-corner {
+                background-color: transparent;
+            }
+            ::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+            }
+            ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+                -webkit-border-radius: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background-color: ${scrollbars.dark};
+            }
+            ::-webkit-scrollbar-thumb {
+                background-color: ${scrollbars.light};
+                -webkit-box-shadow: none;
+            }
         `,
         css: `
             ${config.css || ''}
             ::selection {
                 background: ${foregroundColor} !important;
+            }
+            ::-webkit-scrollbar-button {
+                width: 0;
+                height: 0;
+                display: none;
+            }
+            ::-webkit-scrollbar-corner {
+                background-color: transparent;
+            }
+            ::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+            }
+            ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+                -webkit-border-radius: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background-color: ${scrollbars.dark};
+            }
+            ::-webkit-scrollbar-thumb {
+                background-color: ${scrollbars.light};
+                -webkit-box-shadow: none;
             }
         `
     });
