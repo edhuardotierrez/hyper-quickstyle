@@ -10,21 +10,19 @@ Add `hyper-quickstyle` to the plugins list in your `~/.hyper.js` config file and
 
 ## Customization
 
-Add `hyperQuickStyle:{ }` in your `config` section (`~/.hyper.js`).
+Add `hyperQuickStyle:{ ... }` in your `config` section (`~/.hyper.js`).
 
-## Example
-Customize your scrollbar colors:
+Example: Customize your scrollbar colors:
 ```json
 {
     config: {
-        // ...
+        //...
         hyperQuickStyle: {
             scrollbars: { 
                 light: "#909090", 
                 dark:  "#000000"
             }
         }
-        // ...
     }
 }
 ```
@@ -35,8 +33,8 @@ Customize your scrollbar colors:
 ## Tips
 
 Use `oh-my-zsh` with `agnoster` theme to increase your experience on terminal.
-> [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
-> [agnoster](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster).
+* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) page.
+* [agnoster](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster) theme page.
 
 ## License
 MIT © [MIT License](https://opensource.org/licenses/MIT)

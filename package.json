@@ -1,7 +1,7 @@
 {
   "name": "hyper-quickstyle",
-  "version": "0.1.3",
-  "description": "Theme for Hyper",
+  "version": "0.1.5",
+  "description": "Elegant theme with bright and modern colors for Hyper",
   "main": "index.js",
   "license": "MIT",
   "repository": "edhuardotierrez/hyper-quickstyle",
