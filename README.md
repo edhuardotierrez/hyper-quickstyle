@@ -1,4 +1,4 @@
-# hyper-quicktheme
+# hyper-quickstyle
 
 > Elegant [Hyper](https://hyper.is) theme with bright and modern colors
 
