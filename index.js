@@ -1,31 +1,33 @@
 'use strict';
 
-//const color = require('color');
+const color = require('color');
 
 // Syntax scheme
-const backgroundColor   = '#212f3c';
-const foregroundColor   = '#A4B3C2';
+var backgroundColor     = 'rgb(33, 47, 60)';
+const foregroundColor   = 'rgb(164, 179, 194)';
 const cursorColor       = 'rgba(255, 255, 255, 0.8)';
 const borderColor       = '#1e2837';
-const colors            = {
+var colors            = {
     black:              backgroundColor,
     red:                '#F75752',
     green:              '#54F48D',
     yellow:             '#E7F073',
     blue:               '#4ABCEF',
     magenta:            '#FE6EC5',
-    cyan:               '#8FE5F6',
+    cyan:               'rgb(143, 229, 246)',
     white:              foregroundColor,
-    lightBlack:         '#686868',
-    lightRed:           '#FF6762',
-    lightGreen:         '#64F899',
-    lightYellow:        '#F4FAA7',
-    lightBlue:          '#62CEFF',
-    lightMagenta:       '#FF74C8',
-    lightCyan:          '#9EE9F7',
+    lightBlack:         'rgb(104, 104, 104)',
+    lightRed:           'rgb(255, 103, 98)',
+    lightGreen:         'rgb(100, 248, 153)',
+    lightYellow:        'rgb(244, 250, 167)',
+    lightBlue:          'rgb(98, 206, 255)',
+    lightMagenta:       'rgb(255, 116, 200)',
+    lightCyan:          'rgb(158, 233, 247)',
     lightWhite:         foregroundColor,
 };
-const scrollbars        = {
+const selectionColor     = color(colors.foregroundColor).fade(0.6).string();
+const selectionColorText = color(colors.magenta).string();
+const scrollbars = {
     light: '#455A6D',
     dark: '#273848'
 }
@@ -33,25 +35,39 @@ const scrollbars        = {
 exports.decorateConfig = config => {
 
     const hyperQuickStyle = Object.assign({
+        windowBlur: false,
         scrollbars: {
             light: scrollbars.light || 'transparent',
             dark: scrollbars.dark || 'transparent'
         }
     }, config.hyperQuickStyle);
 
+    if(hyperQuickStyle.windowBlur === true){
+        exports.onWindow = (browserWindow) => {
+            browserWindow.setVibrancy('dark');
+        };
+        
+        backgroundColor = color(backgroundColor).darken(0.20).fade(0.10).string();
+        colors.black = backgroundColor;
+    }
+
     return Object.assign({}, config, {
         foregroundColor,
         backgroundColor,
-        borderColor,
         colors,
+        selectionColor: config.selectionColor || selectionColor, 
+        selectionColorText: config.selectionColorText || selectionColorText, 
+        borderColor: config.borderColor || borderColor,
         cursorColor: config.cursorColor || cursorColor,
         cursorShape: config.cursorShape || 'BEAM',
         fontSize: config.fontSize || 13,
         fontFamily: config.fontFamily || '"Roboto Mono for Powerline", "Fira Code"',
         termCSS: `
+            x-row{ line-height:14px },
             ${config.termCSS || ''}
             ::selection {
-                background: ${foregroundColor} !important;
+                background: ${config.selectionColor} !important;
+                color: ${config.selectionColorText} !important;
             }
             x-screen x-row {
                 font-variant-ligatures: initial;
@@ -85,7 +101,8 @@ exports.decorateConfig = config => {
         css: `
             ${config.css || ''}
             ::selection {
-                background: ${foregroundColor} !important;
+                background: ${config.selectionColor} !important;
+                color: ${config.selectionColorText} !important;
             }
             ::-webkit-scrollbar-button {
                 width: 0;

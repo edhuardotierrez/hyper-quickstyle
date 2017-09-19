@@ -1,6 +1,6 @@
 {
   "name": "hyper-quickstyle",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "Elegant theme with bright and modern colors for Hyper",
   "main": "index.js",
   "license": "MIT",
@@ -17,5 +17,8 @@
     "hyperterm",
     "hyper-quickstyle",
     "quickstyle"
-  ]
+  ],
+  "dependencies": {
+    "color": "^1.0.3"
+  }
 }
